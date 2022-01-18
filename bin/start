@@ -91,6 +91,9 @@ fi
 # because Heroku tends to think we can use more memory than we actually can.
 
 if [ -n "$HEROKU" ]; then
+
+    echo ulimit -u: $(ulimit -u)
+    
     if [ `ulimit -u` = 256 ]; then
         JAVA_OPTS="$JAVA_OPTS -Xmx248m"                    # This seems to be the right amount that prevents the dyno from going over the quota
     fi
